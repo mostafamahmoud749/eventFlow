@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/manrope';
+
+@theme {
+  --breakpoint-xl: 75rem;
+  --color-canvas: #f7f8f5;
+  --color-ink: #172b26;
+  --color-brand: #176b50;
+  --color-brand-hover: #10533d;
+  --color-mint: #e7f3ec;
+  --color-coral: #f16b4e;
+  --color-muted: #5d6f67;
+  --color-line: #dce4de;
+  --color-danger: #b42318;
+  --color-amber: #9a6700;
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-heading: 'Manrope Variable', sans-serif;
+  --shadow-card: 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold tracking-tight;
+  }
+  button:not(:disabled),
+  select {
+    cursor: pointer;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply focus-visible:outline-brand outline-offset-4 focus-visible:outline-2;
+  }
+  input,
+  select,
+  textarea {
+    accent-color: var(--color-brand);
+  }
+  ::selection {
+    @apply bg-mint text-brand;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-[1240px] px-5;
+  }
+  .field {
+    @apply border-line text-ink placeholder:text-muted/70 focus:border-brand focus:ring-brand/15 min-h-11 w-full rounded-lg border bg-white px-3 py-2.5 text-sm focus:ring-2 focus:outline-none;
+  }
+  .primary-link {
+    @apply bg-brand hover:bg-brand-hover inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white transition-colors;
+  }
+  .secondary-link {
+    @apply border-line hover:border-brand hover:text-brand inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border bg-white px-5 py-3 text-sm font-semibold transition-colors;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
